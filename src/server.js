@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const axios = require('axios')
 
 
+
 const port = process.env.PORT || 8000
 const app = express()
 
@@ -30,7 +31,6 @@ async function getRandomComics(req, res) {
     const randomComics = await Promise.all(Array.from({ length: numberOfComics }, getRandomComic));
 
     const validComics = randomComics.filter(comic => comic !== null);
-
     res.json(validComics);
   } catch (error) {
     res.status(400).json({ message: error.message });
